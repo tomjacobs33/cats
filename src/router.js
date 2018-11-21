@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { register } from './routes/cat';
-import { findCats, randomCat } from './routes/cats';
+import { findCats, getCats, randomCat } from './routes/cats';
 
 const router = new Router();
 
@@ -16,5 +16,7 @@ router.get('/cats/random', randomCat);
 router.post('/cat/register', register);
 
 router.post('/cats', findCats);
+
+router.get('/cats', getCats);
 
 export default router;

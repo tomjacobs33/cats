@@ -18,6 +18,22 @@ const findCats = async (req, res) => {
   }
 };
 
+const getCats = async (req, res) => {
+  console.log('Entering findCats function');
+
+  try {
+    const result = await find({}); // grab all cats
+    if (result.length === 0) {
+      throw new Error('Unable to get any cats!');
+    } else {
+      res.send(result);
+    }
+  } catch (err) {
+    console.log(`Get Cats Error: ${err}`);
+    res.status(400).send(`Find Cats Error: ${err}`);
+  }
+};
+
 const randomCat = async (req, res) => {
   console.log('Entering randomCat function');
   try {
@@ -29,4 +45,4 @@ const randomCat = async (req, res) => {
   }
 };
 
-module.exports = { findCats, randomCat };
+module.exports = { findCats, getCats, randomCat };
